@@ -1,0 +1,16 @@
+.col-5{
+    margin: auto;
+}
+
+#div2{
+    margin: auto;
+}
+
+.linea-separadora {
+    margin: auto;
+    border-left: 2px solid #cacaca; /* Grosor y color de la línea */
+    height: 400px; /* Altura de la línea (ajusta según sea necesario) */
+    margin-left: 80px; /* Espacio a la izquierda de la línea (ajusta según sea necesario) */
+    margin-right: 80px; /* Espacio a la derecha de la línea (ajusta según sea necesario) */
+  }
+

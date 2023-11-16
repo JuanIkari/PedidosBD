@@ -1,103 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedido</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h2 class="col-8 mt-5 mb-5">Datos del Pedido</h2>
+    <div class="form-group m-3">
+      <label for="Productos">Productos:</label>
+      <div id="Productos">
+        <select name="id_producto[]" id="productos" class="form-control col-8">
+          <option value="1">Leche</option>
+          <option value="2">Huevo</option>
+          <option value="3">Harina</option>
+          <option value="4">Aceite</option>
+        </select>
 
-</head>
-<body>
-    <div class="container mt-5">
-        <h2 class="col-8 mb-5">Datos del Cliente</h2>
-        <form action="hacer_pedido.php" method="post">
-            <div class="form-group col-8">
-                <label for="Nombre_cliente">Nombre:</label>
-                <input type="text" class="form-control" id="Nombre_cliente" name="Nombre_cliente" required>
-                
-            </div>
-            <div class="form-group col-8">
-                <label for="Apellido_cliente">Apellido:</label>
-                <input type="text" class="form-control" id="Apellido_cliente" name="Apellido_cliente" required>
-            </div>
-            <div class="form-group col-8">
-                <label for="Telefono_cliente">Teléfono:</label>
-                <input type="text" class="form-control" id="Telefono_cliente" name="Telefono_cliente" required>
-            </div>
-            <div class="form-group col-8">
-                <label for="Direccion_cliente">Dirección:</label>
-                <input type="text" class="form-control" id="Direccion_cliente" name="Direccion_cliente" required>
-            </div>
-            <div class="form-group col-8">
-                <label for="Email_cliente">Correo electrónico:</label>
-                <input type="text" class="form-control" id="Email_cliente" name="Email_cliente" required>
-            </div>
+        <input
+          type="number"
+          class="form-control col-4 mb-3"
+          name="Cantidad_producto[]"
+          id="cantidades"
+          placeholder="Cantidad"
+          required
+        />
+      </div>
+      <button type="button" class="btn btn-primary" onclick="agregarProducto()">
+        Agregar Producto
+      </button>
+    </div>
 
-            <h2 class="col-8 mt-5 mb-5">Datos del Pedido</h2>
-            <div class="form-group m-3">
-                <label for="Productos">Productos:</label>
-                <div id="Productos">
-                    <select name="id_producto[]" id="productos" class="form-control col-8">
-                        <option value="1">Leche</option>
-                        <option value="2">Huevo</option>
-                        <option value="3">Harina</option>
-                        <option value="4">Aceite</option>
-                    </select>
+    <div class="form-group m-3">
+      <label for="Forma_pago_pedido">Forma de pago:</label>
+      <select
+        class="form-select"
+        name="Forma_pago_pedido"
+        id="Forma_pago_pedido"
+        required
+      >
+        <option value="1">Efectivo</option>
+        <option value="2">Cheque</option>
+        <option value="3">Tarjeta débito</option>
+        <option value="4">Tarjeta crédito</option>
+      </select>
 
-                    <input type="number" class="form-control col-4 mb-3" name="Cantidad_producto[]" id="cantidades" placeholder="Cantidad" required>
-                </div>
-                <button type="button" class="btn btn-primary" onclick="agregarProducto()">Agregar Producto</button>
-            </div>
-
-            <div class="form-group m-3">
-                <label for="Forma_pago_pedido">Forma de pago:</label>
-                <select class="form-select" name="Forma_pago_pedido" id="Forma_pago_pedido" required>
-                    <option value="1">Efectivo</option>
-                    <option value="2">Cheque</option>
-                    <option value="3">Tarjeta débito</option>
-                    <option value="4">Tarjeta crédito</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-success">Realizar Pedido</button>
-        </form>
+      <button type="submit" class="btn btn-success">Realizar Pedido</button>
     </div>
 
     <script>
-        // Función para agregar campos de productos al formulario
-        function agregarProducto() {
-            var productosDiv = document.getElementById('Productos');
-    
-            var productoDiv = document.createElement('div');
-            productoDiv.className = 'form-group';
-    
-            var productoSelect = document.createElement('select');
-            productoSelect.className = 'form-control col-8';
-            productoSelect.name = 'id_producto[]';
-    
-            var productos = ["Leche", "Huevo", "Harina", "Aceite"];
-            for (var i = 0; i < productos.length; i++) {
-                var option = document.createElement('option');
-                option.value = i + 1;
-                option.text = productos[i];
-                productoSelect.appendChild(option);
-            }
-    
-            var cantidadInput = document.createElement('input');
-            cantidadInput.type = 'number';
-            cantidadInput.className = 'form-control col-4';
-            cantidadInput.name = 'Cantidad_producto[]';
-            cantidadInput.placeholder = 'Cantidad';
-            cantidadInput.required = true;
-    
-            productoDiv.appendChild(productoSelect);
-            productoDiv.appendChild(cantidadInput);
-    
-            productosDiv.appendChild(productoDiv);
+      // Función para agregar campos de productos al formulario
+      function agregarProducto() {
+        var productosDiv = document.getElementById("Productos");
+
+        var productoDiv = document.createElement("div");
+        productoDiv.className = "form-group";
+
+        var productoSelect = document.createElement("select");
+        productoSelect.className = "form-control col-8";
+        productoSelect.name = "id_producto[]";
+
+        var productos = ["Leche", "Huevo", "Harina", "Aceite"];
+        for (var i = 0; i < productos.length; i++) {
+          var option = document.createElement("option");
+          option.value = i + 1;
+          option.text = productos[i];
+          productoSelect.appendChild(option);
         }
+
+        var cantidadInput = document.createElement("input");
+        cantidadInput.type = "number";
+        cantidadInput.className = "form-control col-4";
+        cantidadInput.name = "Cantidad_producto[]";
+        cantidadInput.placeholder = "Cantidad";
+        cantidadInput.required = true;
+
+        productoDiv.appendChild(productoSelect);
+        productoDiv.appendChild(cantidadInput);
+
+        productosDiv.appendChild(productoDiv);
+      }
     </script>
-</body>
+  </body>
 </html>
