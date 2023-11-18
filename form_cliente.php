@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-5">
           <h2 class="mb-5">Datos del Cliente</h2>
-          <form action="hacer_pedido.php" method="post">
+          <form action="registrar_cliente.php" method="post">
             <div class="form-group">
               <label for="Nombre_cliente">Nombre:</label>
               <input
@@ -79,16 +79,19 @@
         <div class="linea-separadora"></div>
 
         <div id="div2" class="col-5">
-          <h2 class="mb-5">Ingresar</h2>
-          <form action="ingresar.php" method="post">
+            <form action="" method="POST">
+            <h2 class="mb-5">Ingresar</h2>
+            <?php
+            include("conexion.php");
+            include("ingresar.php");
+            ?>
             <div class="form-group">
               <label for="Correo">Correo:</label>
               <input
                 type="text"
                 class="form-control"
-                id="Correo"
+                id="email"
                 name="Correo"
-                required
               />
             </div>
             <div class="form-group">
@@ -96,13 +99,12 @@
               <input
                 type="password"
                 class="form-control"
-                id="Telefono"
+                id="input"
                 name="Telefono"
-                required
               />
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Ingresar</button>
+              <input name="btningresar" type="submit" class="btn btn-primary" value="ingresar">
             </div>
           </form>
         </div>
