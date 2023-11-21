@@ -1,0 +1,16 @@
+.col-5{
+    margin: auto;
+}
+
+#div2{
+    margin: auto;
+}
+
+.linea-separadora {
+    margin: auto;
+    border-left: 2px solid #cacaca; 
+    height: 400px; 
+    margin-left: 80px; 
+    margin-right: 80px; 
+  }
+

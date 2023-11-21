@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+    include("conexion.php");
+    $query = mysqli_query($conn, "SELECT Id_producto, Nombre_producto FROM Producto")
+    ?>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -13,24 +17,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h2 class="col-8 mt-5 mb-5">Datos del Pedido</h2>
+    <h2 class="col-8 mt-5 mb-5">Realizar Pedido</h2>
+    <?php
+    include("procesar_pedido.php");
+    ?>
+    <form action="" method="post">
     <div class="form-group m-3">
       <label for="Productos">Productos:</label>
       <div id="Productos">
-        <select name="id_producto[]" id="productos" class="form-control col-8">
-          <option value="1">Leche</option>
-          <option value="2">Huevo</option>
-          <option value="3">Harina</option>
-          <option value="4">Aceite</option>
+
+        <select name="productos" id="productos" class="form-control col-8">
+
+          <?php
+          while($datos = mysqli_fetch_array($query)){
+            ?>
+            <option value="<?php echo $datos['Id_producto']; ?>"><?php echo $datos['Nombre_producto']; ?></option>
+            <?php
+            }
+          ?>
         </select>
 
         <input
           type="number"
           class="form-control col-4 mb-3"
-          name="Cantidad_producto[]"
+          name="Cantidad_productos"
           id="cantidades"
           placeholder="Cantidad"
-          required
         />
       </div>
       <button type="button" class="btn btn-primary" onclick="agregarProducto()">
@@ -44,49 +56,62 @@
         class="form-select"
         name="Forma_pago_pedido"
         id="Forma_pago_pedido"
-        required
       >
-        <option value="1">Efectivo</option>
-        <option value="2">Cheque</option>
-        <option value="3">Tarjeta débito</option>
-        <option value="4">Tarjeta crédito</option>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Cheque">Cheque</option>
+        <option value="Tarjeta débito">Tarjeta débito</option>
+        <option value="Tarjeta crédito">Tarjeta crédito</option>
       </select>
 
-      <button type="submit" class="btn btn-success">Realizar Pedido</button>
+      <input name="btnpedido" type="submit" class="btn btn-success" value="Realizar Pedido">
     </div>
+    </form>
 
     <script>
-      // Función para agregar campos de productos al formulario
-      function agregarProducto() {
-        var productosDiv = document.getElementById("Productos");
+  // Función para agregar campos de productos al formulario
+  function agregarProducto() {
+    var productosDiv = document.getElementById("Productos");
 
-        var productoDiv = document.createElement("div");
-        productoDiv.className = "form-group";
+    var productoDiv = document.createElement("div");
+    productoDiv.className = "form-group";
 
-        var productoSelect = document.createElement("select");
-        productoSelect.className = "form-control col-8";
-        productoSelect.name = "id_producto[]";
+    var productoSelect = document.createElement("select");
+    productoSelect.className = "form-control col-8";
+    productoSelect.name = "productos";
 
-        var productos = ["Leche", "Huevo", "Harina", "Aceite"];
-        for (var i = 0; i < productos.length; i++) {
-          var option = document.createElement("option");
-          option.value = i + 1;
-          option.text = productos[i];
-          productoSelect.appendChild(option);
-        }
+    <?php
+    include("conexion.php");
+    $getProductos = "SELECT * FROM Producto";
+    $getProductos2 = mysqli_query($conn, $getProductos);
 
-        var cantidadInput = document.createElement("input");
-        cantidadInput.type = "number";
-        cantidadInput.className = "form-control col-4";
-        cantidadInput.name = "Cantidad_producto[]";
-        cantidadInput.placeholder = "Cantidad";
-        cantidadInput.required = true;
+    while ($row = mysqli_fetch_array($getProductos2)) {
+      $id_producto = $row["Id_producto"];
+      $nombre_producto = $row["Nombre_producto"];
+      $descripcion_producto = $row["Descripcion_producto"];
+      $precio_producto = $row["Precio_producto"];
+    ?>
+      var option = document.createElement("option");
+      option.value = "<?php echo $id_producto; ?>";
+      option.text = "<?php echo $nombre_producto; ?>";
+      productoSelect.appendChild(option);
+    <?php
+    }
+    ?>
 
-        productoDiv.appendChild(productoSelect);
-        productoDiv.appendChild(cantidadInput);
+    var cantidadInput = document.createElement("input");
+    cantidadInput.type = "number";
+    cantidadInput.className = "form-control col-4";
+    cantidadInput.name = "Cantidad_productos";
+    cantidadInput.placeholder = "Cantidad";
+    cantidadInput.required = true;
 
-        productosDiv.appendChild(productoDiv);
-      }
-    </script>
+    productoDiv.appendChild(productoSelect);
+    productoDiv.appendChild(cantidadInput);
+
+    productosDiv.appendChild(productoDiv);
+  }
+</script>
+ 
+
   </body>
 </html>

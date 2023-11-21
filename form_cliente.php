@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -18,8 +18,11 @@
     <div id="div1" class="container mt-5">
       <div class="row">
         <div class="col-5">
-          <h2 class="mb-5">Datos del Cliente</h2>
-          <form action="registrar_cliente.php" method="post">
+          <h2 class="mb-5">Registrarse</h2>
+          <?php
+          include("registrar_cliente.php");
+          ?>
+          <form action="" method="post">
             <div class="form-group">
               <label for="Nombre_cliente">Nombre:</label>
               <input
@@ -27,17 +30,15 @@
                 class="form-control"
                 id="Nombre_cliente"
                 name="Nombre_cliente"
-                required
               />
             </div>
             <div class="form-group">
-              <label for="Apellido_cliente">Apellido:</label>
+              <label for="Apellido_cliente">Apellidos:</label>
               <input
                 type="text"
                 class="form-control"
                 id="Apellido_cliente"
                 name="Apellido_cliente"
-                required
               />
             </div>
             <div class="form-group">
@@ -47,7 +48,6 @@
                 class="form-control"
                 id="Telefono_cliente"
                 name="Telefono_cliente"
-                required
               />
             </div>
             <div class="form-group">
@@ -57,21 +57,19 @@
                 class="form-control"
                 id="Direccion_cliente"
                 name="Direccion_cliente"
-                required
               />
             </div>
             <div class="form-group">
-              <label for="Email_cliente">Correo electrónico:</label>
+              <label for="Contraseña_cliente">Contraseña:</label>
               <input
-                type="text"
+                type="password"
                 class="form-control"
-                id="Email_cliente"
-                name="Email_cliente"
-                required
+                id="Contraseña_cliente"
+                name="Contraseña_cliente"
               />
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Enviar</button>
+              <input name="btningresar1" type="submit" class="btn btn-primary" value="ingresar">
             </div>
           </form>
         </div>
@@ -86,25 +84,25 @@
             include("ingresar.php");
             ?>
             <div class="form-group">
-              <label for="Correo">Correo:</label>
+              <label for="Telefono_cliente">Telefono: </label>
               <input
                 type="text"
                 class="form-control"
-                id="email"
-                name="Correo"
+                id="Telefono_cliente"
+                name="Telefono_cliente"
               />
             </div>
             <div class="form-group">
-              <label for="Telefono">Telefono:</label>
+              <label for="Contraseña_cliente">Contraseña:</label>
               <input
                 type="password"
                 class="form-control"
-                id="input"
-                name="Telefono"
+                id="Contraseña_cliente"
+                name="Contraseña_cliente"
               />
             </div>
             <div class="form-group">
-              <input name="btningresar" type="submit" class="btn btn-primary" value="ingresar">
+              <input name="btningresar2" type="submit" class="btn btn-primary" value="ingresar">
             </div>
           </form>
         </div>

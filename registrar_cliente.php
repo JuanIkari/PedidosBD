@@ -1,25 +1,29 @@
 <?php
-    $Nombre_cliente = $_POST['Nombre_cliente'];
-    $Apellido_cliente = $_POST['Apellido_cliente'];
-    $Telefono_cliente = $_POST['Telefono_cliente'];
-    $Direccion_cliente = $_POST['Direccion_cliente'];
-    $Email_cliente = $_POST['Email_cliente'];
 
-    include("conexion.php");
+    if(!empty($_POST["btningresar1"])){
+        if (empty($_POST["Nombre_cliente"]) and empty($_POST["Apellido_cliente"]) and empty($_POST["Telefono_cliente"]) and empty($_POST["Direccion_cliente"]) and empty($_POST["Contraseña_cliente"])) {
+            echo '<div class="alert alert-danger">LOS CAMPOS ESTAN VACIOS</div>';
+        } else {
+            $Nombre_cliente = $_POST['Nombre_cliente'];
+            $Apellido_cliente = $_POST['Apellido_cliente'];
+            $Telefono_cliente = $_POST['Telefono_cliente'];
+            $Direccion_cliente = $_POST['Direccion_cliente'];
+            $Contraseña_cliente = $_POST['Contraseña_cliente'];
+        
+            include("conexion.php");
 
-    $sql = "INSERT INTO Cliente (Nombre_cliente, Apellido_cliente, Telefono_cliente, Direccion_cliente, Email_cliente) VALUES ('$Nombre_cliente', '$Apellido_cliente', '$Telefono_cliente', '$Direccion_cliente', '$Email_cliente')";
+            $lel = $conn->query("SELECT * FROM cliente WHERE Telefono_cliente ='$Telefono_cliente'");
+            if ($datos = $lel->fetch_object()) {
+                echo '<div class="alert alert-danger">EL USUARIO YA EXISTE</div>';
+            } else {
+                $sql = "INSERT INTO Cliente (Nombre_cliente, Apellido_cliente, Telefono_cliente, Direccion_cliente, Contraseña_cliente) VALUES ('$Nombre_cliente', '$Apellido_cliente', '$Telefono_cliente', '$Direccion_cliente', '$Contraseña_cliente')";
 
-    mysqli_query($conn, $sql);
+                mysqli_query($conn, $sql);
+    
+                mysqli_close($conn);
+                echo '<div class="alert alert-info">REGISTRADO EXISOTASAMENTE</div>';
+            }
+        }
+    }
 
-    mysqli_close($conn);
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<body>
-    <script type = "text/javascript">
-        alert("Cliente registrado exitosamente");
-        window.location.href = "form_cliente.php";
-    </script>
-</body>
-</html>
