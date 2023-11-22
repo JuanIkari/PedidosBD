@@ -1,16 +1,53 @@
-.col-5{
-    margin: auto;
+.col-5 {
+  margin: auto;
 }
 
-#div2{
-    margin: auto;
+#div2 {
+  margin: auto;
 }
 
 .linea-separadora {
-    margin: auto;
-    border-left: 2px solid #cacaca; 
-    height: 400px; 
-    margin-left: 80px; 
-    margin-right: 80px; 
-  }
+  margin: auto;
+  border-left: 2px solid #cacaca;
+  height: 400px;
+  margin-left: 80px;
+  margin-right: 80px;
+}
 
+.producto {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.producto img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.producto .nombre {
+  font-weight: bold;
+}
+.producto .descripcion {
+  margin-top: 5px;
+}
+.producto .precio {
+  margin-top: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Distribuir los elementos a lo largo del contenedor */
+  align-items: flex-start; /* Alinear los elementos en la parte superior */
+  margin-top: 20px; /* Espacio superior entre el contenedor y otros elementos */
+}
+
+.form-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+#informacion {
+  flex: 1;
+  background-color: #f0f0f0; /* Agregué un color de fondo para distinguir el área de información */
+  padding: 10px; /* Agregué un relleno para mejorar la presentación */
+}
