@@ -2,6 +2,18 @@
   margin: auto;
 }
 
+header {
+  margin: 10px;
+  border: 5px solid #828282;
+  border-radius: 5px;
+  background-color: #cacaca;
+  height: 100px;
+}
+header h2{
+  margin: 0;
+  padding: 20px 0;
+  text-align:center;
+}
 #div2 {
   margin: auto;
 }
@@ -10,8 +22,8 @@
   margin: auto;
   border-left: 2px solid #cacaca;
   height: 400px;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 45px;
+  margin-right: 45px;
 }
 
 .producto {
@@ -38,16 +50,31 @@
   display: flex;
   justify-content: space-between; /* Distribuir los elementos a lo largo del contenedor */
   align-items: flex-start; /* Alinear los elementos en la parte superior */
-  margin-top: 20px; /* Espacio superior entre el contenedor y otros elementos */
+  margin-top: 50px; /* Espacio superior entre el contenedor y otros elementos */
 }
 
 .form-container {
   flex: 1;
   margin-right: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #informacion {
   flex: 1;
-  background-color: #f0f0f0; /* Agregué un color de fondo para distinguir el área de información */
+  background-color: #d4edda; /* Agregué un color de fondo para distinguir el área de información */
   padding: 10px; /* Agregué un relleno para mejorar la presentación */
+  border: 3px solid #c3e6cb;
+  border-radius: 8px;
+}
+
+label {
+  font-weight: bold;
+}
+
+select, input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
 }

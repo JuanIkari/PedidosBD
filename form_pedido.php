@@ -17,7 +17,10 @@
 </head>
 
 <body>
-    <h2 class="col-8 mt-5 mb-5">Realizar Pedido</h2>
+    <header class="head">
+        <h2>Realizar Pedido</h2>
+    </header>
+    
     <?php
     include("procesar_pedido.php");
     ?>
