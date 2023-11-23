@@ -19,8 +19,8 @@ if (isset($_GET['producto'])) {
             <h3 class="nombre"><?php echo $producto['Nombre_producto']; ?></h3>
             <div class="info">
               <img src="assets/images/<?php echo $producto['Id_producto']; ?>.jpeg" alt="Imagen del Producto">
-                <p class="descripcion"><?php echo $producto['Descripcion_producto']; ?></p>
-                <p class="precio">$<?php echo $producto['Precio_producto']; ?></p>
+                <p class="descripcion mt-2"><?php echo $producto['Descripcion_producto']; ?></p>
+                <p class="precio text-left">$<?php echo $producto['Precio_producto']; ?></p>
             </div>
             <?php
         } else {

@@ -31,7 +31,7 @@
                     <label for="Productos">Productos:</label>
                     <div id="Productos">
 
-                        <select name="productos" id="productos" class="form-control col-4 mb-3">
+                        <select name="productos" id="productos" class="selector col-5 mb-3">
                             <option value="0"></option>
                             <?php
           while($datos = mysqli_fetch_array($query)){
