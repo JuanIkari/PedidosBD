@@ -1,7 +1,7 @@
 <?php
 
     if(!empty($_POST["btningresar1"])){
-        if (empty($_POST["Nombre_cliente"]) and empty($_POST["Apellido_cliente"]) and empty($_POST["Telefono_cliente"]) and empty($_POST["Direccion_cliente"]) and empty($_POST["Contraseña_cliente"])) {
+        if (empty($_POST["Nombre_cliente"]) or empty($_POST["Apellido_cliente"]) or empty($_POST["Telefono_cliente"]) or empty($_POST["Direccion_cliente"]) or empty($_POST["Contraseña_cliente"])) {
             echo '<div class="alert alert-danger">LOS CAMPOS ESTAN VACIOS</div>';
         } else {
             $Nombre_cliente = $_POST['Nombre_cliente'];
