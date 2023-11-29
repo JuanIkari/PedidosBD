@@ -2,7 +2,7 @@
 session_start();
 
     if(!empty($_POST["btningresar2"])){
-        if (empty($_POST["Telefono_cliente"]) and empty($_POST["Contraseña_cliente"])) {
+        if (empty($_POST["Telefono_cliente"]) or empty($_POST["Contraseña_cliente"])) {
             echo '<div class="alert alert-danger">LOS CAMPOS ESTAN VACIOS</div>';
         } else {
             $Telefono_cliente = $_POST["Telefono_cliente"];

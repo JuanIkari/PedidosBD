@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div id="div1" class="container mt-5">
+    <div id="div1" class="container mt-5 d-flex justify-content-center align-items-center">
         <div class="row">
             <div class="col-5">
                 <h2 class="mb-5">Registrarse</h2>
